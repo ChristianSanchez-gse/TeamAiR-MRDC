@@ -7,3 +7,6 @@ Christian Sanchez
 Srivardhan Karnati
 Caleb Satvedi
 hola
+Jashan Virdi
+Kaloyan Stalev
+Frank Tarshis
