@@ -6,7 +6,6 @@ Created by engineering members of EDT Team AiR:
 Christian Sanchez
 Srivardhan Karnati
 Caleb Satvedi
-hola
 Jashan Virdi
 Kaloyan Stalev
 Frank Tarshis
