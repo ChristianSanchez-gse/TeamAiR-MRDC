@@ -4,4 +4,5 @@ Codebase for the Team AiR project that will be used to compete in the Midwest Ro
 
 Created by engineering members of EDT Team AiR:
 Christian Sanchez
+Caleb Satvedi
 Adam Beigel
