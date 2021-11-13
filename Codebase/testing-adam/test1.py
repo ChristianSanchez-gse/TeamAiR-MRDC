@@ -7,7 +7,7 @@ def power(a, b=1):
         result *= a
         return result
 
-print("Hello world! I am Adam.")
+print("Hello world!")
 x = 0
 print(x)
 x = "hello"
