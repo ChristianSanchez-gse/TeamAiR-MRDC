@@ -4,6 +4,9 @@ from time import sleep
 servo1 = Servo(18)
 servo2 = Servo(13)
 
+# servo.value between -1 and 1
+# otherwise min and max
+
 def open():
     servo1.min()
     servo2.max()

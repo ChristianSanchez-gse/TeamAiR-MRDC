@@ -1,7 +1,7 @@
 from gpiozero import Servo
 from time import sleep
 
-servo = Servo(18)
+servo = Servo(13)
 val = -1
 
 try:
