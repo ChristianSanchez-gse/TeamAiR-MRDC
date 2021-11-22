@@ -10,7 +10,8 @@ def open():
 
 def close():
     servo1.max()
-    servo2.min();
+    servo2.min()
+
 try:
     while True:
         close()
@@ -24,5 +25,6 @@ except KeyboardInterrupt:
     print("close")
     sleep(1.0)
     print("we sleep")
-    close()
+    servo1.max()
+    servo2.min()
     print("Program stopped")
