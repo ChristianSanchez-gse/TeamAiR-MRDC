@@ -5,12 +5,12 @@ servo1 = Servo(18)
 servo2 = Servo(13)
 
 def open(x):
-    servo1.value(x)
-    servo2.value(1-x)
+    servo1.value = x
+    servo2.value = 1-x
 
 def close(x=0):
-    servo1.value(x)
-    servo2.value(1-x)
+    servo1.value = x
+    servo2.value = 1-x
 
 try:
     while True:
