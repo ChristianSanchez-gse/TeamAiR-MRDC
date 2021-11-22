@@ -15,9 +15,12 @@ try:
     while True:
         close()
         open()
+        print("open")
         sleep(1.0)
         close()
+        print("close")
         sleep(1.0)
 except KeyboardInterrupt:
+    print("close")
     close()
     print("Program stopped")
