@@ -8,12 +8,12 @@ try:
     while True:
         servo1.min()
         servo2.max()
-        sleep(0.5)
+        sleep(1.0)
         servo1.mid()
         servo2.mid();
-        sleep(0.5)
+        sleep(1.0)
         servo1.max()
         servo2.min();
-        sleep(0.5)
+        sleep(1.0)
 except KeyboardInterrupt:
         print("Program stopped")
