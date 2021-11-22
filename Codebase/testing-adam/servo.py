@@ -4,11 +4,11 @@ from time import sleep
 servo1 = Servo(18)
 servo2 = Servo(13)
 
-def open:
+def open():
     servo1.min()
     servo2.max()
 
-def close:
+def close():
     servo1.max()
     servo2.min();
 
