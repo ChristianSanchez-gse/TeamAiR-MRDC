@@ -1,15 +1,19 @@
 from gpiozero import Servo
 from time import sleep
 
-servo = Servo(18)
+servo1 = Servo(18)
+servo2 = Servo(13)
 
 try:
     while True:
-        servo.min()
+        servo1.min()
+        servo2.max()
         sleep(0.5)
-        servo.mid()
+        servo1.mid()
+        servo2.mid();
         sleep(0.5)
-        servo.max()
+        servo1.max()
+        servo2.min();
         sleep(0.5)
 except KeyboardInterrupt:
         print("Program stopped")
