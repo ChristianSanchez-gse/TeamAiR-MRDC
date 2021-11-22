@@ -11,13 +11,13 @@ def open():
 def close():
     servo1.max()
     servo2.min();
-
-while True:
-    close()
-    open()
-    sleep(1.0)
-    close()
-    sleep(1.0)
+try:
+    while True:
+        close()
+        open()
+        sleep(1.0)
+        close()
+        sleep(1.0)
 except KeyboardInterrupt:
     close()
     print("Program stopped")
