@@ -4,21 +4,21 @@ from time import sleep
 servo1 = Servo(18)
 servo2 = Servo(13)
 
-def open(x):
-    servo1.value = x
-    servo2.value = 1-x
+def open():
+    servo1.min()
+    servo2.max()
 
-def close(x=0):
-    servo1.value = x
-    servo2.value = 1-x
+def close():
+    servo1.max()
+    servo2.min()
 
 try:
     while True:
         close()
-        open(1)
+        open()
         print("open")
         sleep(1.0)
-        close(0)
+        close()
         print("close")
         sleep(1.0)
 except KeyboardInterrupt:
