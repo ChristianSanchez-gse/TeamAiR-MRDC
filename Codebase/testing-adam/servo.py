@@ -22,5 +22,7 @@ try:
         sleep(1.0)
 except KeyboardInterrupt:
     print("close")
+    sleep(1.0)
+    print("we sleep")
     close()
     print("Program stopped")
