@@ -8,7 +8,7 @@ def open(x):
     servo1.value(x)
     servo2.value(1-x)
 
-def close(x):
+def close(x=0):
     servo1.value(x)
     servo2.value(1-x)
 
