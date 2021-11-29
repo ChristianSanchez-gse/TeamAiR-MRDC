@@ -19,7 +19,7 @@ try:
     while True:
         close()
         open()
-        print("open")
+        print("hello")
         sleep(1.0)
         close()
         print("close")
