@@ -12,7 +12,36 @@ while True:
     input("Press Enter to read color...")
     color = sensor.color
     color_rgb = sensor.color_rgb_bytes
-    print("RGB color as 8 bits per channel int: #{0:02X} or as 3-tuple: {1}".format(color, color_rgb))
+    R = color_rgb[0] / 255
+    G = color_rgb[1] / 255
+    B = color_rgb[2] / 255
+
+    new_rgb = (R, G, B)
+
+    max = -1
+    max_index = -1
+    min = 256
+    min_index = -1
+    for i in range(3):
+        if (new_rgb[i] > max):
+            max = new_rgb[i]
+            max_index = i
+        if (new_rgb[i] < min):
+            min = new_rgb[i]
+            min_index = i
+
+    hue = -1
+    if (max_index == 0):
+        hue = (G-B)/(max-min)
+    if (max_index == 1):
+        hue = 2.0 + (B-R)/(max-min)
+    if (max_index == 2):
+        hue = 4.0 + (R-G)/(max-min)
+
+    hue = hue * 60
+    print("RGB: ", color_rgb)
+    print("R: {0}, G: {1}, B; {2}".format(R, G, B))
+    print("Hue: ", hue)
 
     # Read the color temperature and lux of the sensor too.
     temp = sensor.color_temperature
