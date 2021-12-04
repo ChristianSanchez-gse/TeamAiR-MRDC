@@ -13,7 +13,12 @@ while True:
     color = sensor.color
     color_rgb = sensor.color_rgb_bytes
     print("RGB color as 8 bits per channel int: #{0:02X} or as 3-tuple: {1}".format(color, color_rgb))
-    print("  ", webcolors.rgb_to_name(color_rgb))
+    try:
+        print("  ", webcolors.rgb_to_name(color_rgb))
+        break
+    except ValueError:
+        print("No color name...")
+
     # Read the color temperature and lux of the sensor too.
     temp = sensor.color_temperature
     lux = sensor.lux
