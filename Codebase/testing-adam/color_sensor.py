@@ -13,7 +13,7 @@ while True:
     # print(sensor.color_raw)
     input("Press enter to read color...")
     color_rgb = sensor.color_rgb_bytes
-    temp = sensor.color_temperature
-    hue = getHue(color_rgb)
+    temp = round(sensor.color_temperature)
+    hue = round(getHue(color_rgb))
 
     print("Hue: {0}, Temperature: {1}".format(hue, temp))
