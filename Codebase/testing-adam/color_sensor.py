@@ -11,15 +11,9 @@ from colors import *
 while True:
     # Raw data from the sensor in a 4-tuple of red, green, blue, clear light component values
     # print(sensor.color_raw)
-    input("Press Enter to read color...")
-    color = sensor.color
+    input("Press enter to read color...")
     color_rgb = sensor.color_rgb_bytes
-
-    hue = getHue(color_rgb)
-    # print("R: {0}, G: {1}, B; {2}".format(R, G, B))
-    print("Hue: ", hue)
-
-    # Read the color temperature and lux of the sensor too.
     temp = sensor.color_temperature
-    lux = sensor.lux
-    print("  Temperature: {0}K Lux: {1}\n".format(temp, lux))
+    hue = getHue(color_rgb)
+
+    print("Hue: {0}, Temperature: {1}", hue, temp)
