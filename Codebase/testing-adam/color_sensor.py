@@ -8,7 +8,7 @@ sensor = adafruit_tcs34725.TCS34725(i2c)
 # loop through to keep getting values
 while True:
     # Raw data from the sensor in a 4-tuple of red, green, blue, clear light component values
-    # print(sensor.color_raw)
+    print(sensor.color_raw)
 
     color = sensor.color
     color_rgb = sensor.color_rgb_bytes
