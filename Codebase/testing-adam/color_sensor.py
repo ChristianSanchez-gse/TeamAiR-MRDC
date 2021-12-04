@@ -45,7 +45,7 @@ while True:
     color_rgb = sensor.color_rgb_bytes
 
     hue = getHue(color_rgb)
-    print("R: {0}, G: {1}, B; {2}".format(R, G, B))
+    # print("R: {0}, G: {1}, B; {2}".format(R, G, B))
     print("Hue: ", hue)
 
     # Read the color temperature and lux of the sensor too.
