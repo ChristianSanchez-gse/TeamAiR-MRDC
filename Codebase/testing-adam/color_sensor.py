@@ -16,4 +16,4 @@ while True:
     temp = sensor.color_temperature
     hue = getHue(color_rgb)
 
-    print("Hue: {0}, Temperature: {1}", hue, temp)
+    print("Hue: {0}, Temperature: {1}".format(hue, temp))
