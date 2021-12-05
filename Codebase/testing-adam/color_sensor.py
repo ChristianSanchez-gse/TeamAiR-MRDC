@@ -19,11 +19,12 @@ while run:
     user_input = input("Press enter to read color or # to stop: ")
     if (user_input == "#"):
         run = False
+        break
     color_rgb = sensor.color_rgb_bytes
     temp = round(sensor.color_temperature)
     hue = round(getHue(color_rgb))
 
     print("Hue: {0}, Temperature: {1}".format(hue, temp))
-    f.write("{0} {1}".format(hue, temp))
+    f.write("{0} {1}\n".format(hue, temp))
 
 f.close();
