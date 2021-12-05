@@ -12,13 +12,13 @@ filename = input("Enter a filename: ")
 f = open(filename, "a")
 
 # loop through to keep getting values
-continue = True
-while continue:
+run = True
+while run:
     # Raw data from the sensor in a 4-tuple of red, green, blue, clear light component values
     # print(sensor.color_raw)
     user_input = input("Press enter to read color or # to stop: ")
     if user_input == "#"
-        continue = False
+        run = False
     color_rgb = sensor.color_rgb_bytes
     temp = round(sensor.color_temperature)
     hue = round(getHue(color_rgb))
