@@ -20,6 +20,7 @@ while run:
     if (user_input == "#"):
         run = False
         break
+
     color_rgb = sensor.color_rgb_bytes
     temp = round(sensor.color_temperature)
     hue = round(getHue(color_rgb))
