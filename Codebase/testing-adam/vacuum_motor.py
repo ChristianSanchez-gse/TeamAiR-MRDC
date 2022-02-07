@@ -1,6 +1,6 @@
 import pigpio
 import time
-motor_pin = 2 #Noted GPIO number
+motor_pin = 2 # noted GPIO number
 
 pi = pigpio.pi()
 
@@ -11,7 +11,7 @@ for i in range(3):
         time.sleep(1)
         pi.set_servo_pulsewidth(motor_pin, 1700)
         time.sleep(1)
-        pi.set_servo_pulsewidth(motor_pin, 1800) 
+        pi.set_servo_pulsewidth(motor_pin, 1800)
         time.sleep(1)
         pi.set_servo_pulsewidth(motor_pin, 1900)
         time.sleep(1)
