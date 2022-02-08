@@ -1,6 +1,6 @@
 import pigpio
 import time
-motor_pin = 3 # noted GPIO number
+motor_pin = 2 # noted GPIO number
 
 pi = pigpio.pi()
 
