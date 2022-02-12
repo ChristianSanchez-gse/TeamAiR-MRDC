@@ -3,7 +3,7 @@ import time
 import os
 open_io = "sudo pigiod" # starts the pigpio daemon (required to get motor working)
 motor_pin = 18 # noted GPIO number
-
+# test comment
 pi = pigpio.pi()
 
 pi.set_servo_pulsewidth(motor_pin, 1300)
