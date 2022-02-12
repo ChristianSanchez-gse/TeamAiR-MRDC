@@ -6,11 +6,11 @@ motor_pin = 18 # noted GPIO number
 # test comment
 pi = pigpio.pi()
 
-pi.set_servo_pulsewidth(motor_pin, 1300)
+pi.set_servo_pulsewidth(motor_pin, 1500)
 time.sleep(5)
 
 for i in range(3):
-        pi.set_servo_pulsewidth(motor_pin, 1500)
+        pi.set_servo_pulsewidth(motor_pin, 2000)
         time.sleep(1)
 
 pi.set_servo_pulsewidth(motor_pin, 0)
