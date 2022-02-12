@@ -1,6 +1,8 @@
 import pigpio
 import time
-motor_pin = 2 # noted GPIO number
+import os
+open_io = "sudo pigiod" # starts the pigpio daemon (required to get motor working)
+motor_pin = 18 # noted GPIO number
 
 pi = pigpio.pi()
 
