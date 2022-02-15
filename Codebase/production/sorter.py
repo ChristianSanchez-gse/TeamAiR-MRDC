@@ -1,6 +1,6 @@
 from gpiozero import Servo
 from time import sleep
-from colors.py import getHue
+from colors import getHue
 import board
 import adafruit_tcs34725
 
@@ -31,18 +31,29 @@ def openDoor():
 # controls the overall mechanism to eject the ball into the holding chamber
 def sortBall():
     openDoor()
-    sleep(3)
+    sleep(2)
     moveBall()
 
 # Returns true if the correct color of the ball is found, else false.
 def rightColor():
-    pass
+    color_rgb = sensor.color_rgb_bytes
+    hue = round(getHue(color_rgb))
+    if (hue > 110 and hue < 130):
+        return True
+    else:
+        return False
+
 
 #main function
 runSorter = True
-vacuumMotor(True)
-while(runSorter = True):
+#vacuumMotor(True)
+while(runSorter == True):
+    sleep(4)
     if (rightColor() == True):
         sortBall()
-    else
-        vacuumMotor(False)
+        #vacuumMotor(False)
+
+
+
+# wtf is servo jitter?!?!?! look into it
+# -chris
