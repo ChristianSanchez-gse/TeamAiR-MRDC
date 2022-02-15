@@ -5,7 +5,7 @@ doorServo = Servo(17)
 pushServo = Servo(27)
 val = -1
 
-
+# moves the ball with the servo
 def moveBall():
     pushServo.min()
     sleep(.5)
@@ -13,6 +13,8 @@ def moveBall():
     sleep(.5)
     pushServo.min()
 
+
+# opens the door of the sorting mechanism
 def openDoor():
     doorServo.min()
     sleep(.5)
@@ -20,19 +22,24 @@ def openDoor():
     sleep(.5)
     doorServo.min()
 
-# try:
-#     while True:
-#         doorServo.value = val
-#         pushServo.value = val
-#         sleep(0.1)
-#         val = val + 0.1
-#         if val > 1:
-#             val = -1
-# except KeyboardInterrupt:
-#         print("Program stopped")
+# controls the overall mechanism to eject the ball into the holding chamber
+def sortBall():
+    openDoor()
+    sleep(3)
+    moveBall()
+
+# Returns true if the correct color of the ball is found, else false.
+def rightColor():
+    pass
 
 #main function
+runSorter = True
+vacuumMotor(True)
+while(runSorter = True)
+    if (rightColor() == True)
+        sortBall()
+    else
+        vacuumMotor(False)
+    
 
-openDoor()
-sleep(3)
-moveBall()
+
