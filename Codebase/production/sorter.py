@@ -3,6 +3,7 @@ from time import sleep
 from colors.py import getHue
 import board
 import adafruit_tcs34725
+
 i2c = board.I2C()
 sensor = adafruit_tcs34725.TCS34725(i2c)
 
@@ -40,8 +41,8 @@ def rightColor():
 #main function
 runSorter = True
 vacuumMotor(True)
-while(runSorter = True)
-    if (rightColor() == True)
+while(runSorter = True):
+    if (rightColor() == True):
         sortBall()
     else
         vacuumMotor(False)
