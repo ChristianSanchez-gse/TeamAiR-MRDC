@@ -1,5 +1,10 @@
 from gpiozero import Servo
 from time import sleep
+from colors.py import getHue
+import board
+import adafruit_tcs34725
+i2c = board.I2C()
+sensor = adafruit_tcs34725.TCS34725(i2c)
 
 doorServo = Servo(17)
 pushServo = Servo(27)
@@ -40,6 +45,3 @@ while(runSorter = True)
         sortBall()
     else
         vacuumMotor(False)
-    
-
-
