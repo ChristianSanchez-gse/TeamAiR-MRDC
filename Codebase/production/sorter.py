@@ -52,6 +52,7 @@ while(runSorter == True):
     if (rightColor() == True):
         sortBall()
         #vacuumMotor(False)
+        
 
 
 
