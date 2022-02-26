@@ -3,6 +3,7 @@ from time import sleep
 from colors import getHue
 import board
 import adafruit_tcs34725
+from statistics import mean
 
 i2c = board.I2C()
 sensor = adafruit_tcs34725.TCS34725(i2c)
@@ -34,24 +35,68 @@ def sortBall():
     sleep(2)
     moveBall()
 
+def readColorSensor():
+    hue = round(getHue(sensor.color_rgb_bytes))
+    temp = round(sensor.color_temperature)
+    return hue, temp
+
+
 # Returns true if the correct color of the ball is found, else false.
 def rightColor():
-    color_rgb = sensor.color_rgb_bytes
-    hue = round(getHue(color_rgb))
     if (hue > 110 and hue < 130):
         return True
     else:
         return False
 
+def getBallColor():
+    hueList = []
+    tempList = []
+
+    for i in range(3):
+        print("getting average...")
+        h, t = readColorSensor()
+        hueList.append(h)
+        tempList.append(t)
+        sleep(0.3)
+
+    hueAvg = mean(hueList)
+    tempAvg = mean(tempList)
+
+    if hueAvg < 5 or hueAvg > 350:
+        # check temp for pink or red
+        if tempAvg < 3000:
+            return "red"
+        else:
+            return "pink"
+    elif hueAvg < 13:
+        return "orange"
+    elif hueAvg < 70:
+        return "yellow"
+    elif hueAvg < 120:
+        return "green"
+    elif hueAvg < 230:
+        return "blue"
+    elif hueAvg < 270:
+        return "purple"
+
+
+    
 
 #main function
 runSorter = True
+chamberColor = -1
 #vacuumMotor(True)
-while(runSorter == True):
-    sleep(4)
-    if (rightColor() == True):
-        sortBall()
-        #vacuumMotor(False)
+for i in range(20):
+    hue, temp = readColorSensor()
+    if hue != chamberColor:
+        ballColor = getBallColor()
+        print(ballColor)
+        # if ballColor == currentColor:
+        #     keepBall()
+        # else:
+        #     dropBall()
+    sleep(2)
+
 
 
 
