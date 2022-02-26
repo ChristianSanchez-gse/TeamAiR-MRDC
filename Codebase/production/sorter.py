@@ -21,9 +21,15 @@ def moveBall():
     pushServo.min()
 
 def keepBall():
-    pass
+    vacuumMotor(False)
+    openDoor()
+    moveBall()
+    vacuumMotor(True)
 
 def dropBall():
+    vacuumMotor(False)
+
+def vacuumMotor(on):
     pass
 
 # opens the door of the sorting mechanism
@@ -87,14 +93,15 @@ def getBallColor():
 
     
 
-#main function
+# main function
 runSorter = True
 chamberColor = -1
-#vacuumMotor(True)
+vacuumMotor(True)
 sequence = ["blue", "purple", "red", "blue"]
 seqIndex = 0
+user_input = input("Press any key to start")
+
 while(runSorter):
-    user_input = input("Press any key to start")
     hue, temp = readColorSensor()
     if hue != chamberColor:
         ballColor = getBallColor()
