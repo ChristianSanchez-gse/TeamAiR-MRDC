@@ -7,8 +7,8 @@ import adafruit_tcs34725
 i2c = board.I2C()
 sensor = adafruit_tcs34725.TCS34725(i2c)
 
-doorServo = Servo(17)
-pushServo = Servo(27)
+doorServo = Servo(14)
+pushServo = Servo(15)
 val = -1
 
 # moves the ball with the servo
@@ -52,7 +52,6 @@ while(runSorter == True):
     if (rightColor() == True):
         sortBall()
         #vacuumMotor(False)
-        
 
 
 
