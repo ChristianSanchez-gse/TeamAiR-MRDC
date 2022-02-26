@@ -76,7 +76,7 @@ def getBallColor():
         return "green"
     elif hueAvg < 230:
         return "blue"
-    elif hueAvg < 270:
+    else:
         return "purple"
 
 
@@ -86,7 +86,7 @@ def getBallColor():
 runSorter = True
 chamberColor = -1
 #vacuumMotor(True)
-for i in range(20):
+while(runSorter):
     hue, temp = readColorSensor()
     if hue != chamberColor:
         ballColor = getBallColor()
@@ -95,7 +95,9 @@ for i in range(20):
         #     keepBall()
         # else:
         #     dropBall()
-    sleep(2)
+    user_input = input("Press enter to read color or # to stop: ")
+    if (user_input == "#"):
+        runSorter = False
 
 
 
