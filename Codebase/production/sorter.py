@@ -90,7 +90,7 @@ def getBallColor():
 #         return "blue"
 #     else:
 #         return "purple"
-    
+
     if hueAvg >= 358 or hueAvg <= 4:
         colorsList.append("red")
     if hueAvg >= 5 and hueAvg <= 10:
@@ -105,17 +105,32 @@ def getBallColor():
         colorsList.append("purple")
     if hueAvg >= 350 and hueAvg <= 360:
         colorsList.append("pink")
-    
-    
+
+
     if len(colorsList) == 0:
         return None
-    else: # For now return just this, red and pink overlap so check up on this.
+    elif len(colorsList) == 1:
         return colorsList[0]
-    
-    
+    else:
+        if tempAvg >= 2200 or tempAvg <= 2700:
+            return "red"
+        if tempAvg >= 2400 and tempAvg <= 2500:
+            return "orange"
+        if tempAvg >= 2400 and tempAvg <= 2900:
+            return "yellow"
+        if tempAvg >= 4000 and tempAvg <= 7000:
+            return "green"
+        if tempAvg >= 12000 and tempAvg <= 15000:
+            return "blue"
+        if tempAvg >= 5800 and tempAvg <= 6100:
+            return "purple"
+        if tempAvg >= 3600 and tempAvg <= 3800:
+            return "pink"
 
 
-    
+
+
+
 
 # main function
 runSorter = True
@@ -138,7 +153,7 @@ while(runSorter):
 
     if seqIndex == len(sequence):
         break
-    
+
     user_input = input("Press enter to read color or # to stop: ")
     if (user_input == "#"):
         runSorter = False
