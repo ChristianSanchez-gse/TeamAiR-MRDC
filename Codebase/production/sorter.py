@@ -103,7 +103,7 @@ def getBallColor():
         colorsList.append("blue")
     if hueAvg >= 250 and hueAvg <= 270:
         colorsList.append("purple")
-    if hueAvg >= 350 and hueAvg <= 360:
+    if hueAvg >= 350 or  hueAvg <= 2:
         colorsList.append("pink")
 
 
