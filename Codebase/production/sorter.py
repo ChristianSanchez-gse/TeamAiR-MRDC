@@ -62,6 +62,7 @@ def rightColor():
 def getBallColor():
     hueList = []
     tempList = []
+    colorsList = []
 
     for i in range(3):
         print("getting average...")
@@ -73,22 +74,45 @@ def getBallColor():
     hueAvg = mean(hueList)
     tempAvg = mean(tempList)
 
-    if hueAvg < 5 or hueAvg > 350:
-        # check temp for pink or red
-        if tempAvg < 3000:
-            return "red"
-        else:
-            return "pink"
-    elif hueAvg < 13:
-        return "orange"
-    elif hueAvg < 70:
-        return "yellow"
-    elif hueAvg < 120:
-        return "green"
-    elif hueAvg < 230:
-        return "blue"
-    else:
-        return "purple"
+#     if hueAvg < 5 or hueAvg > 350:
+#         # check temp for pink or red
+#         if tempAvg < 3000:
+#             return "red"
+#         else:
+#             return "pink"
+#     elif hueAvg < 13:
+#         return "orange"
+#     elif hueAvg < 70:
+#         return "yellow"
+#     elif hueAvg < 120:
+#         return "green"
+#     elif hueAvg < 230:
+#         return "blue"
+#     else:
+#         return "purple"
+    
+    if hueAvg >= 358 or hueAvg <= 4:
+        colorsList.append("red")
+    if hueAvg >= 5 and hueAvg <= 10:
+        colorsList.append("orange")
+    if hueAvg >= 30 and hueAvg <= 70:
+        colorsList.append("yellow")
+    if hueAvg >= 100 and hueAvg <= 130:
+        colorsList.append("green")
+    if hueAvg >= 210 and hueAvg <= 240:
+        colorsList.append("blue")
+    if hueAvg >= 250 and hueAvg <= 270:
+        colorsList.append("purple")
+    if hueAvg >= 350 and hueAvg <= 360:
+        colorsList.append("pink")
+    
+    
+    if len(colorsList) == 0:
+        return None
+    else: # For now return just this, red and pink overlap so check up on this.
+        return colors[0]
+    
+    
 
 
     
