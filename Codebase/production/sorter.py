@@ -110,7 +110,7 @@ def getBallColor():
     if len(colorsList) == 0:
         return None
     else: # For now return just this, red and pink overlap so check up on this.
-        return colors[0]
+        return colorsList[0]
     
     
 
