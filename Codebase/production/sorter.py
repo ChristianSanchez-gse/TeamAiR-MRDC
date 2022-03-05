@@ -1,15 +1,20 @@
 from gpiozero import Servo
-from time import sleep
-from colors import getHue
 import board
 import adafruit_tcs34725
+
+from time import sleep
 from statistics import mean
+
+from colors import *
+from servoControl import *
+
 
 i2c = board.I2C()
 sensor = adafruit_tcs34725.TCS34725(i2c)
 
 doorServo = Servo(14)
 pushServo = Servo(15)
+vacuumMotor = Servo(25)
 val = -1
 
 # moves the ball with the servo
@@ -21,16 +26,20 @@ def moveBall():
     pushServo.min()
 
 def keepBall():
-    vacuumMotor(False)
+    setVacuumMotor(False)
     openDoor()
     moveBall()
-    vacuumMotor(True)
+    setVacuumMotor(True)
 
 def dropBall():
-    vacuumMotor(False)
+    setVacuumMotor(False)
 
-def vacuumMotor(on):
-    pass
+def setVacuumMotor(on):
+    if on:
+        vacuumMotor.value = 0.5
+    else:
+        vacuumMotor.value = 0
+
 
 # opens the door of the sorting mechanism
 def openDoor():
@@ -129,13 +138,21 @@ def getBallColor():
 
 
 
-
+def calibrateMotor():
+    # calibration
+    print("The throttle value is now at 100%, wait until after the ascending beeps to continue")
+    vacuumMotor.value = 1
+    s = input("press enter to move the throttle signal to 0%")
+    vacuumMotor.value = 0
+    s = input("Press enter to end the calibration process (after the descending beeps)")
 
 
 # main function
+calibrateMotor()
+
 runSorter = True
 chamberColor = -1
-vacuumMotor(True)
+setVacuumMotor(True)
 sequence = ["blue", "purple", "red", "blue"]
 seqIndex = 0
 user_input = input("Press any key to start")
