@@ -32,12 +32,6 @@ def openDoor(doorServo):
     sleep(.5)
     doorServo.min()
 
-# controls the overall mechanism to eject the ball into the holding chamber
-# def sortBall(doorServo, pushServo):
-#     openDoor(doorServo)
-#     sleep(2)
-#     moveBall(pushServo)
-
 # arm the motor
 def calibrateMotor(vacuumMotor):
     # calibration

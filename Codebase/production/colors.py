@@ -54,23 +54,6 @@ def getBallColor(sensor):
     hueAvg = mean(hueList)
     tempAvg = mean(tempList)
 
-#     if hueAvg < 5 or hueAvg > 350:
-#         # check temp for pink or red
-#         if tempAvg < 3000:
-#             return "red"
-#         else:
-#             return "pink"
-#     elif hueAvg < 13:
-#         return "orange"
-#     elif hueAvg < 70:
-#         return "yellow"
-#     elif hueAvg < 120:
-#         return "green"
-#     elif hueAvg < 230:
-#         return "blue"
-#     else:
-#         return "purple"
-
     if hueAvg >= 358 or hueAvg <= 4:
         colorsList.append("red")
     if hueAvg >= 5 and hueAvg <= 10:
