@@ -22,9 +22,9 @@ def dropBall(vacuumMotor):
 # turn vacuum on/off
 def setVacuumMotor(vacuumMotor, on):
     if on:
-        vacuumMotor.value = 0.5
-    else:
         vacuumMotor.value = 0
+    else:
+        vacuumMotor.value = -1
 
 # opens the door of the sorting mechanism
 def openDoor(doorServo):
@@ -34,7 +34,7 @@ def openDoor(doorServo):
     sleep(.5)
     doorServo.min()
 
-# arm the motor
+# calibrate motor
 def calibrateMotor(vacuumMotor):
     # calibration
     print("The throttle value is now at 100%, wait until after the ascending beeps to continue")

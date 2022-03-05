@@ -10,10 +10,12 @@ i2c = board.I2C()
 colorSensor = adafruit_tcs34725.TCS34725(i2c)
 doorServo = Servo(14)
 pushServo = Servo(15)
-vacuumMotor = Servo(25)
+vacuumMotor = Servo(18)
 
 # arming sequence
-calibrateMotor(vacuumMotor)
+vacuumMotor.value = -1
+sleep(0.5)
+vacuumMotor.value = 0
 
 # initialize the sequence
 sequence = ["blue", "purple", "red", "blue"]
@@ -22,7 +24,6 @@ chamberColor = -1
 
 # prompt to look for color
 user_input = input("Press any key to start")
-setVacuumMotor(vacuumMotor, True)
 runSorter = True
 while(runSorter):
     hue, temp = readColorSensor(colorSensor)

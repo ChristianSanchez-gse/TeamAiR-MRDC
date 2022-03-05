@@ -1,6 +1,6 @@
 from gpiozero import Servo
 from time import sleep
-motor = Servo(25)
+motor = Servo(18)
 
 # Documentation:
 
@@ -33,8 +33,8 @@ try:
     print("The throttle value is now at 100%, wait until after the ascending beeps to continue")
     motor.value = 1
     s = input("press enter to move the throttle signal to 0%")
-     motor.value = 0
-    s input("Press enter to end the calibration process (after the descending beeps)")
+    motor.value = -1
+    s = input("Press enter to end the calibration process (after the descending beeps)")
 
 
 
