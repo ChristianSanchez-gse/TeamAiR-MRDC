@@ -1,3 +1,7 @@
+from time import sleep
+from statistics import mean
+
+# convert rgb to hue
 def getHue(color_rgb):
     R = color_rgb[0] / 255
     G = color_rgb[1] / 255
@@ -28,27 +32,21 @@ def getHue(color_rgb):
         hue += 360
     return hue
 
-def readColorSensor():
+# get the hue and temp from the color sensor
+def readColorSensor(sensor):
     hue = round(getHue(sensor.color_rgb_bytes))
     temp = round(sensor.color_temperature)
     return hue, temp
 
-
-# Returns true if the correct color of the ball is found, else false.
-def rightColor():
-    if (hue > 110 and hue < 130):
-        return True
-    else:
-        return False
-
-def getBallColor():
+# read color 3 times, get the average, then return a string color depending on hue and temp values
+def getBallColor(sensor):
     hueList = []
     tempList = []
     colorsList = []
 
     for i in range(3):
         print("getting average...")
-        h, t = readColorSensor()
+        h, t = readColorSensor(sensor)
         hueList.append(h)
         tempList.append(t)
         sleep(0.3)

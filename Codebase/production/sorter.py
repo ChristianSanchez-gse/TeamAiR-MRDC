@@ -2,40 +2,38 @@ from gpiozero import Servo
 import board
 import adafruit_tcs34725
 
-from time import sleep
-from statistics import mean
-
 from colors import *
 from servoControl import *
 
 # initialize sensor and servos
 i2c = board.I2C()
-sensor = adafruit_tcs34725.TCS34725(i2c)
-
+colorSensor = adafruit_tcs34725.TCS34725(i2c)
 doorServo = Servo(14)
 pushServo = Servo(15)
 vacuumMotor = Servo(25)
-val = -1
 
-calibrateMotor()
+# arming sequence
+calibrateMotor(vacuumMotor)
 
-runSorter = True
-chamberColor = -1
-setVacuumMotor(True)
+# initialize the sequence
 sequence = ["blue", "purple", "red", "blue"]
 seqIndex = 0
-user_input = input("Press any key to start")
+chamberColor = -1
 
+# prompt to look for color
+user_input = input("Press any key to start")
+setVacuumMotor(vacuumMotor, True)
+runSorter = True
 while(runSorter):
-    hue, temp = readColorSensor()
+    hue, temp = readColorSensor(colorSensor)
     if hue != chamberColor:
-        ballColor = getBallColor()
+        ballColor = getBallColor(colorSensor)
         print(ballColor)
         if ballColor == sequence[seqIndex]:
-            keepBall()
+            keepBall(doorServo, pushServo, vacuumMotor)
             seqIndex += 1
         else:
-            dropBall()
+            dropBall(vacuumMotor)
 
     if seqIndex == len(sequence):
         break
@@ -43,8 +41,6 @@ while(runSorter):
     user_input = input("Press enter to read color or # to stop: ")
     if (user_input == "#"):
         runSorter = False
-
-
 
 
 # wtf is servo jitter?!?!?! look into it

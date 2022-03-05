@@ -1,21 +1,23 @@
+from time import sleep
+
 # moves the ball with the servo
-def moveBall():
+def moveBall(pushServo):
     pushServo.min()
     sleep(.5)
     pushServo.max()
     sleep(.5)
     pushServo.min()
 
-def keepBall():
-    setVacuumMotor(False)
-    openDoor()
-    moveBall()
-    setVacuumMotor(True)
+def keepBall(doorServo, pushServo, vacuumMotor):
+    setVacuumMotor(vacuumMotor, False)
+    openDoor(doorServo)
+    moveBall(pushServo)
+    setVacuumMotor(vacuumMotor, True)
 
-def dropBall():
-    setVacuumMotor(False)
+def dropBall(vacuumMotor):
+    setVacuumMotor(vacuumMotor, False)
 
-def setVacuumMotor(on):
+def setVacuumMotor(vacuumMotor, on):
     if on:
         vacuumMotor.value = 0.5
     else:
@@ -23,7 +25,7 @@ def setVacuumMotor(on):
 
 
 # opens the door of the sorting mechanism
-def openDoor():
+def openDoor(doorServo):
     doorServo.min()
     sleep(.5)
     doorServo.max()
@@ -31,13 +33,13 @@ def openDoor():
     doorServo.min()
 
 # controls the overall mechanism to eject the ball into the holding chamber
-def sortBall():
-    openDoor()
-    sleep(2)
-    moveBall()
+# def sortBall(doorServo, pushServo):
+#     openDoor(doorServo)
+#     sleep(2)
+#     moveBall(pushServo)
 
-    
-def calibrateMotor():
+# arm the motor
+def calibrateMotor(vacuumMotor):
     # calibration
     print("The throttle value is now at 100%, wait until after the ascending beeps to continue")
     vacuumMotor.value = 1
