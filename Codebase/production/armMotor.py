@@ -7,6 +7,6 @@ for i in range(5):
     print(5-i)
     sleep(1)
 
-motor.value = 0
+motor.value = -0.4
 sleep(1)
 motor.value = -1
