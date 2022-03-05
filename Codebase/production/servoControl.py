@@ -8,21 +8,23 @@ def moveBall(pushServo):
     sleep(.5)
     pushServo.min()
 
+# turn off vacuum, open the door, push the ball, turn on the vacuum 
 def keepBall(doorServo, pushServo, vacuumMotor):
     setVacuumMotor(vacuumMotor, False)
     openDoor(doorServo)
     moveBall(pushServo)
     setVacuumMotor(vacuumMotor, True)
 
+# turn off the vacuum
 def dropBall(vacuumMotor):
     setVacuumMotor(vacuumMotor, False)
 
+# turn vacuum on/off
 def setVacuumMotor(vacuumMotor, on):
     if on:
         vacuumMotor.value = 0.5
     else:
         vacuumMotor.value = 0
-
 
 # opens the door of the sorting mechanism
 def openDoor(doorServo):
