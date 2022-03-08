@@ -20,6 +20,8 @@ vacuumMotor.value = 0
 # initialize the sequence
 sequence = ["blue", "purple", "red", "blue"]
 seqIndex = 0
+
+# set this to the "ambient" hue reading of the color sensor
 chamberColor = -1
 
 # prompt to look for color
@@ -27,15 +29,21 @@ user_input = input("Press any key to start")
 runSorter = True
 while(runSorter):
     hue, temp = readColorSensor(colorSensor)
+
+    # if there is a ball in the chamber
     if hue != chamberColor:
+        # get color of ball as a string
         ballColor = getBallColor(colorSensor)
         print(ballColor)
+
+        # if it matches the next color we need, keep it
         if ballColor == sequence[seqIndex]:
             keepBall(doorServo, pushServo, vacuumMotor)
             seqIndex += 1
-        else:
+        else:  # otherwise drop it
             dropBall(vacuumMotor)
 
+    # reached end of specified sequence
     if seqIndex == len(sequence):
         break
 
