@@ -15,7 +15,22 @@ vacuumMotor = Servo(18)
 # arming sequence
 vacuumMotor.value = -1
 sleep(0.5)
-vacuumMotor.value = 0
+for i in range(3):
+    vacuumMotor.value = 1
+    print(1)
+    sleep(5)
+    vacuumMotor.value = 0.7
+    print(0.7)
+    sleep(5)
+    vacuumMotor.value = 0.5
+    print(0.5)
+    sleep(5)
+    vacuumMotor.value = 0.3
+    print(0.3)
+    sleep(5)
+    vacuumMotor.value = -1
+    print("off")
+    sleep(2)
 
 # initialize the sequence
 sequence = ["blue", "purple", "red", "blue"]
