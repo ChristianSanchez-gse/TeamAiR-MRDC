@@ -50,19 +50,19 @@ while(runSorter):
     sensorRGB = colorSensor.color_rgb_bytes
 
     # ball in the chamber
-    # if hue != chamberColor:
-    #     # get color of ball as a string
-    #     ballColor = getBallColor(colorSensor)
-    #     print(ballColor)
+    if ballInChamber():
+        # get color of ball as a string
+        ballColor = getBallColor(colorSensor)
+        print(ballColor)
 
-    #     # if it matches the next color we need, keep it
-    #     if ballColor == sequence[seqIndex]:
-    #         keepBall(doorServo, pushServo, vacuumMotor)
-    #         seqIndex += 1
-    #     else:  # otherwise drop it
-    #         dropBall(vacuumMotor)
+        # if it matches the next color we need, keep it
+        if ballColor == sequence[seqIndex]:
+            keepBall(doorServo, pushServo, vacuumMotor)
+            seqIndex += 1
+        else:  # otherwise drop it
+            dropBall(vacuumMotor)
 
-
+    
 
     # reached end of specified sequence
     if seqIndex == len(sequence):

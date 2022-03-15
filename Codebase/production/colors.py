@@ -34,59 +34,23 @@ def getHue(color_rgb):
     return hue
 
 # get the hue and temp from the color sensor
-# def readColorSensor(sensor):
-#     hue = round(getHue(sensor.color_rgb_bytes))
-#     temp = round(sensor.color_temperature)
-#     return hue, temp
+def readColorSensor(sensor):
+    hue = round(getHue(sensor.color_rgb_bytes))
+    temp = round(sensor.color_temperature)
+    return hue, temp
 
-# read color 3 times, get the average, then return a string color depending on hue and temp values
+# read color 10 times, get the average, then return a string color depending on hue and temp values
 def getBallColor(sensor):
-    hueList = []
-    tempList = []
-    colorsList = []
+    rgbReadings = []
 
-    for i in range(3):
-        print("getting average...")
-        h, t = readColorSensor(sensor)
-        hueList.append(h)
-        tempList.append(t)
-        sleep(0.3)
+    print("getting average...")
 
-    hueAvg = mean(hueList)
-    tempAvg = mean(tempList)
+    for i in range(10):
+        rgbReadings.append(sensor.color_rgb_bytes)
+        sleep(0.1)
+    
+    print("done")
 
-    if hueAvg >= 358 or hueAvg <= 4:
-        colorsList.append("red")
-    if hueAvg >= 5 and hueAvg <= 10:
-        colorsList.append("orange")
-    if hueAvg >= 30 and hueAvg <= 70:
-        colorsList.append("yellow")
-    if hueAvg >= 100 and hueAvg <= 130:
-        colorsList.append("green")
-    if hueAvg >= 210 and hueAvg <= 240:
-        colorsList.append("blue")
-    if hueAvg >= 250 and hueAvg <= 270:
-        colorsList.append("purple")
-    if hueAvg >= 350 or  hueAvg <= 2:
-        colorsList.append("pink")
+    rgbAverage = np.mean(rgbReadings, axis=0)
 
-
-    if len(colorsList) == 0:
-        return None
-    elif len(colorsList) == 1:
-        return colorsList[0]
-    else:
-        if tempAvg >= 2200 or tempAvg <= 2700:
-            return "red"
-        if tempAvg >= 2400 and tempAvg <= 2500:
-            return "orange"
-        if tempAvg >= 2400 and tempAvg <= 2900:
-            return "yellow"
-        if tempAvg >= 4000 and tempAvg <= 7000:
-            return "green"
-        if tempAvg >= 12000 and tempAvg <= 15000:
-            return "blue"
-        if tempAvg >= 5800 and tempAvg <= 6100:
-            return "purple"
-        if tempAvg >= 3600 and tempAvg <= 3800:
-            return "pink"
+    return getClosestColor(rgbAverage)
