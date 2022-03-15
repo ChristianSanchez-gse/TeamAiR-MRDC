@@ -1,6 +1,7 @@
 from gpiozero import Servo
 import board
 import adafruit_tcs34725
+import numpy as np
 
 from colors import *
 from servoControl import *
@@ -12,11 +13,6 @@ doorServo = Servo(14)
 pushServo = Servo(15)
 vacuumMotor = Servo(18)
 chamberServo = Servo(23)
-
-
-# determine if ball is in the chamber (sensor color a certain distance from ambient color)
-def ballInChamber(sensorRGB):
-    return True
 
 # arming sequence
 vacuumMotor.value = -1
@@ -45,7 +41,14 @@ sequence = ["blue", "purple", "red", "blue"]
 seqIndex = 0
 
 # set this to the "ambient" hue reading of the color sensor
-chamberColor = -1
+ambientColor = (30, 20, 30)
+
+# determine if ball is in the chamber (sensor color a certain distance from ambient color)
+def ballInChamber(sensorRGB):
+    # distance = np.linalg.norm(np.array(sensorRGB) - ambientColor)
+    # print(distance)
+    # return distance > 100 # return true if color is within some distance
+    return True
 
 # prompt to look for color
 user_input = input("Press any key to start")
@@ -75,6 +78,7 @@ while(runSorter):
     user_input = input("Press enter to read color or # to stop: ")
     if (user_input == "#"):
         runSorter = False
+
 
 
 # wtf is servo jitter?!?!?! look into it
