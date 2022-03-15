@@ -3,13 +3,13 @@ from statistics import mean
 import numpy as np
 
 # these are the values we get from testing
-red = (255, 0, 0)
-orange = (255, 255, 0)
-yellow = (0, 0, 0)
-green = (0, 0, 0)
-blue = (0, 0, 0)
-purple = (0, 0, 0)
-pink = (0, 0, 0)
+red = (74, 5, 3)
+orange = (67, 8, 2)
+yellow = (27, 27, 2)
+green = (8, 41, 7)
+blue = (2, 18, 47)
+purple = (13, 11, 27)
+pink = (43, 6, 1)
 
 # convert rgb to hue
 def getHue(color_rgb):
