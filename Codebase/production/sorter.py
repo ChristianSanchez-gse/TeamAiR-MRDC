@@ -70,7 +70,7 @@ while(runSorter):
 
     # reached end of specified sequence
     if seqIndex == len(sequence):
-        break
+        dropSequence(chamberServo);
 
     user_input = input("Press enter to read color or # to stop: ")
     if (user_input == "#"):

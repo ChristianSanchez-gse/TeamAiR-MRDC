@@ -38,11 +38,19 @@ def openDoor(doorServo):
     doorServo.min()
     sleep(0.5)
 
-# calibrate motor
-def calibrateMotor(vacuumMotor):
-    # calibration
-    print("The throttle value is now at 100%, wait until after the ascending beeps to continue")
-    vacuumMotor.value = 1
-    s = input("press enter to move the throttle signal to 0%")
-    vacuumMotor.value = 0
-    s = input("Press enter to end the calibration process (after the descending beeps)")
+# # calibrate motor
+# def calibrateMotor(vacuumMotor):
+#     # calibration
+#     print("The throttle value is now at 100%, wait until after the ascending beeps to continue")
+#     vacuumMotor.value = 1
+#     s = input("press enter to move the throttle signal to 0%")
+#     vacuumMotor.value = 0
+#     s = input("Press enter to end the calibration process (after the descending beeps)")
+
+def dropSequence(chamberServo):
+    chamberServo.min()
+    sleep(0.5)
+    chamberServo.max()
+    sleep(0.5)
+    chamberServo.min()
+    sleep(0.5)
