@@ -13,6 +13,11 @@ pushServo = Servo(15)
 vacuumMotor = Servo(18)
 chamberServo = Servo(23)
 
+
+# determine if ball is in the chamber (sensor color a certain distance from ambient color)
+def ballInChamber(sensorRGB):
+    return True
+
 # arming sequence
 vacuumMotor.value = -1
 sleep(0.5)
@@ -46,7 +51,6 @@ chamberColor = -1
 user_input = input("Press any key to start")
 runSorter = True
 while(runSorter):
-    # hue, temp = readColorSensor(colorSensor)
     sensorRGB = colorSensor.color_rgb_bytes
 
     # ball in the chamber
@@ -57,12 +61,12 @@ while(runSorter):
 
         # if it matches the next color we need, keep it
         if ballColor == sequence[seqIndex]:
+            print("keeping ball")
             keepBall(doorServo, pushServo, vacuumMotor)
             seqIndex += 1
         else:  # otherwise drop it
+            print("dropping ball")
             dropBall(vacuumMotor)
-
-    
 
     # reached end of specified sequence
     if seqIndex == len(sequence):
@@ -72,9 +76,6 @@ while(runSorter):
     if (user_input == "#"):
         runSorter = False
 
-# determine if ball is in the chamber (sensor color a certain distance from ambient color)
-def ballInChamber(sensorRGB):
-    pass
 
 # wtf is servo jitter?!?!?! look into it
 # -chris

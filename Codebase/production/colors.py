@@ -11,6 +11,7 @@ blue = (2, 18, 47)
 purple = (13, 11, 27)
 pink = (43, 6, 1)
 colorsRGB = (red, orange, yellow, green, blue, purple, pink)
+colorNames = ("red", "orange", "yellow", "green", "blue", "purple", "pink")
 
 # read color 10 times, get the average, then return a string color depending on hue and temp values
 def getBallColor(sensor):
@@ -32,4 +33,4 @@ def getClosestColor(rgbAverage):
     distances = []
     for c in colorsRGB:
         distances.append(np.linalg.norm(c - rgbAverage))
-    return colorsRGB[distances.index(min(distances))]
+    return colorNames[distances.index(min(distances))]
