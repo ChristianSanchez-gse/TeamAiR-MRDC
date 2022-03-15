@@ -50,7 +50,7 @@ while(runSorter):
     sensorRGB = colorSensor.color_rgb_bytes
 
     # ball in the chamber
-    if ballInChamber():
+    if ballInChamber(sensorRGB):
         # get color of ball as a string
         ballColor = getBallColor(colorSensor)
         print(ballColor)
@@ -72,6 +72,9 @@ while(runSorter):
     if (user_input == "#"):
         runSorter = False
 
+# determine if ball is in the chamber (sensor color a certain distance from ambient color)
+def ballInChamber(sensorRGB):
+    pass
 
 # wtf is servo jitter?!?!?! look into it
 # -chris
