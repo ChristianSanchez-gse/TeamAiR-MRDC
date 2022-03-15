@@ -11,26 +11,29 @@ colorSensor = adafruit_tcs34725.TCS34725(i2c)
 doorServo = Servo(14)
 pushServo = Servo(15)
 vacuumMotor = Servo(18)
+chamberServo = Servo(23)
 
 # arming sequence
 vacuumMotor.value = -1
 sleep(0.5)
-for i in range(3):
-    vacuumMotor.value = 1
-    print(1)
-    sleep(5)
-    vacuumMotor.value = 0.7
-    print(0.7)
-    sleep(5)
-    vacuumMotor.value = 0.5
-    print(0.5)
-    sleep(5)
-    vacuumMotor.value = 0.3
-    print(0.3)
-    sleep(5)
-    vacuumMotor.value = -1
-    print("off")
-    sleep(2)
+
+# test speeds
+# for i in range(3):
+#     vacuumMotor.value = 1
+#     print(1)
+#     sleep(5)
+#     vacuumMotor.value = 0.7
+#     print(0.7)
+#     sleep(5)
+#     vacuumMotor.value = 0.5
+#     print(0.5)
+#     sleep(5)
+#     vacuumMotor.value = 0.3
+#     print(0.3)
+#     sleep(5)
+#     vacuumMotor.value = -1
+#     print("off")
+#     sleep(2)
 
 # initialize the sequence
 sequence = ["blue", "purple", "red", "blue"]
@@ -43,7 +46,8 @@ chamberColor = -1
 user_input = input("Press any key to start")
 runSorter = True
 while(runSorter):
-    hue, temp = readColorSensor(colorSensor)
+    # hue, temp = readColorSensor(colorSensor)
+    (r, g, b) = colorSensor.color_rgb_bytes
 
     # if there is a ball in the chamber
     if hue != chamberColor:

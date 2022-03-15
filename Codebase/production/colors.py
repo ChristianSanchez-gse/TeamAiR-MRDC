@@ -1,5 +1,6 @@
 from time import sleep
 from statistics import mean
+import numpy as np
 
 # convert rgb to hue
 def getHue(color_rgb):
@@ -33,10 +34,10 @@ def getHue(color_rgb):
     return hue
 
 # get the hue and temp from the color sensor
-def readColorSensor(sensor):
-    hue = round(getHue(sensor.color_rgb_bytes))
-    temp = round(sensor.color_temperature)
-    return hue, temp
+# def readColorSensor(sensor):
+#     hue = round(getHue(sensor.color_rgb_bytes))
+#     temp = round(sensor.color_temperature)
+#     return hue, temp
 
 # read color 3 times, get the average, then return a string color depending on hue and temp values
 def getBallColor(sensor):
