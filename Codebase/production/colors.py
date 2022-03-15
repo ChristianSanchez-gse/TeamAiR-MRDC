@@ -2,6 +2,15 @@ from time import sleep
 from statistics import mean
 import numpy as np
 
+# these are the values we get from testing
+red = (255, 0, 0)
+orange = (255, 255, 0)
+yellow = (0, 0, 0)
+green = (0, 0, 0)
+blue = (0, 0, 0)
+purple = (0, 0, 0)
+pink = (0, 0, 0)
+
 # convert rgb to hue
 def getHue(color_rgb):
     R = color_rgb[0] / 255
@@ -54,3 +63,6 @@ def getBallColor(sensor):
     rgbAverage = np.mean(rgbReadings, axis=0)
 
     return getClosestColor(rgbAverage)
+
+def getClosestColor(rgbAverage):
+    pass
