@@ -32,4 +32,4 @@ def getClosestColor(rgbAverage):
     distances = []
     for c in colorsRGB:
         distances.append(np.linalg.norm(c - rgbAverage))
-    return min(distances)
+    return colorsRGB[distances.index(min(distances))]
