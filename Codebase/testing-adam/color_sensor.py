@@ -25,8 +25,8 @@ while run:
 
     # print out info and write hue and temp to file
     print("Hue: {0}, Temperature: {1}".format(hue, temp))
-    print(color_rgb)
-    f.write("{0} {1}\n".format(hue, temp))
+    print("RGB: {0}".format(color_rgb))
+    f.write("{0} {1} {2}\n".format(color_rgb[0], color_rgb[1], color_rgb[2]))
 
 # close the file
 f.close();
