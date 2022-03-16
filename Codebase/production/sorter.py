@@ -14,27 +14,11 @@ pushServo = Servo(15)
 vacuumMotor = Servo(18)
 chamberServo = Servo(23)
 
-# arming sequence
+# arming sequence?
 vacuumMotor.value = -1
 sleep(0.5)
 
-# test speeds
-# for i in range(3):
-#     vacuumMotor.value = 1
-#     print(1)
-#     sleep(5)
-#     vacuumMotor.value = 0.7
-#     print(0.7)
-#     sleep(5)
-#     vacuumMotor.value = 0.5
-#     print(0.5)
-#     sleep(5)
-#     vacuumMotor.value = 0.3
-#     print(0.3)
-#     sleep(5)
-#     vacuumMotor.value = -1
-#     print("off")
-#     sleep(2)
+testVacuumSpeed(vacuumMotor)
 
 # initialize the sequence
 sequence = ["blue", "purple", "red", "blue"]

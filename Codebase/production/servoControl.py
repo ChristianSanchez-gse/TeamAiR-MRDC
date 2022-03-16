@@ -9,7 +9,7 @@ def moveBall(pushServo):
     pushServo.min()
     sleep(0.5)
 
-# turn off vacuum, open the door, push the ball, turn on the vacuum 
+# turn off vacuum, open the door, push the ball, turn on the vacuum
 def keepBall(doorServo, pushServo, vacuumMotor):
     setVacuumMotor(vacuumMotor, False)
     openDoor(doorServo)
@@ -21,6 +21,32 @@ def dropBall(vacuumMotor):
     setVacuumMotor(vacuumMotor, False)
     sleep(3)
     setVacuumMotor(vacuumMotor, True)
+
+# test different speeds for vacuumMotor
+def testVacuumSpeed(vacuumMotor):
+    run = True
+    while (run):
+        user_input = input("Press enter to test speed or # to stop: ")
+        if (user_input == "#"):
+            run = False
+            break
+
+        for i in range(3):
+            vacuumMotor.value = 1
+            print(1)
+            sleep(5)
+            vacuumMotor.value = 0.7
+            print(0.7)
+            sleep(5)
+            vacuumMotor.value = 0.5
+            print(0.5)
+            sleep(5)
+            vacuumMotor.value = 0.3
+            print(0.3)
+            sleep(5)
+            vacuumMotor.value = -1
+            print("off")
+            sleep(2)
 
 # turn vacuum on/off
 def setVacuumMotor(vacuumMotor, on):
