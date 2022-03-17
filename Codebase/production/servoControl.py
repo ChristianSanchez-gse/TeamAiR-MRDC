@@ -24,11 +24,9 @@ def dropBall(vacuumMotor):
 
 # test different speeds for vacuumMotor
 def testVacuumSpeed(vacuumMotor):
-    run = True
-    while (run):
+    while (True):
         user_input = input("Press enter to test speed or # to stop: ")
         if (user_input == "#"):
-            run = False
             break
 
         for i in range(3):
