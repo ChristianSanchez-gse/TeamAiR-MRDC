@@ -20,11 +20,14 @@ sleep(0.5)
 
 testVacuumSpeed(vacuumMotor)
 
-# initialize the sequence
-sequence = ["blue", "purple", "red", "blue"]
+# initialize the sequences
+s1 = ("blue", "purple", "red", "blue")
+s2 = ("green", "yellow", "red", "green")
+s3  = ("blue", "purple", "red", "green")
+sequence = (s1, s2, s3)
 seqIndex = 0
 
-# set this to the "ambient" hue reading of the color sensor
+# set this to the "ambient" chamber rgb reading of the color sensor
 ambientColor = (30, 20, 30)
 
 # determine if ball is in the chamber (sensor color a certain distance from ambient color)
@@ -35,7 +38,7 @@ def ballInChamber(sensorRGB):
     return True
 
 # prompt to look for color
-user_input = input("Press any key to start")
+user_input = input("Press enter to start")
 runSorter = True
 while(runSorter):
     sensorRGB = colorSensor.color_rgb_bytes
@@ -47,7 +50,7 @@ while(runSorter):
         print(ballColor)
 
         # if it matches the next color we need, keep it
-        if ballColor == sequence[seqIndex]:
+        if ballColor == s1[seqIndex]:
             print("keeping ball")
             keepBall(doorServo, pushServo, vacuumMotor)
             seqIndex += 1
@@ -56,7 +59,7 @@ while(runSorter):
             dropBall(vacuumMotor)
 
     # reached end of specified sequence
-    if seqIndex == len(sequence):
+    if seqIndex == len(s1):
         dropSequence(chamberServo);
 
     user_input = input("Press enter to read color or # to stop: ")
