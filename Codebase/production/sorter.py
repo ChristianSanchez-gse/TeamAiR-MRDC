@@ -18,7 +18,7 @@ chamberServo = Servo(23)
 vacuumMotor.value = -1
 sleep(0.5)
 
-testVacuumSpeed(vacuumMotor)
+# testVacuumSpeed(vacuumMotor)
 
 # initialize the sequences
 s1 = ("blue", "purple", "red", "blue")
@@ -40,6 +40,7 @@ def ballInChamber(sensorRGB):
 # prompt to look for color
 user_input = input("Press enter to start")
 runSorter = True
+doorServo.min()
 while(runSorter):
     sensorRGB = colorSensor.color_rgb_bytes
 
