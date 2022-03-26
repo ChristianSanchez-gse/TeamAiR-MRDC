@@ -30,10 +30,10 @@ def getBallColor(sensor):
         rgbReadings.append(sensor.color_rgb_bytes)
         sleep(0.1)
 
-    if (True) :
-        print("std:", np.std(rgbReadings, 0))
-
     print("done")
+
+    if (True) :
+        print("sd:", np.std(rgbReadings, 0))
 
     rgbAverage = np.mean(rgbReadings, 0)
 
@@ -49,7 +49,6 @@ def getClosestColor(rgbAverage):
     # updating min as we go
     for key, value in colors.items():
         distance = np.linalg.norm(value - rgbAverage)
-        print("dist:", distance, "key:", key, "value:", value)
         if distance < minDistance:
             minDistance = distance
             minColor = key
