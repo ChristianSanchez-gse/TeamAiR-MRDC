@@ -49,7 +49,7 @@ def testVacuumSpeed(vacuumMotor):
 # turn vacuum on/off
 def setVacuumMotor(vacuumMotor, on):
     if on:
-        vacuumMotor.value = 0.7
+        vacuumMotor.value = 0.2
     else:
         vacuumMotor.value = -1
 
