@@ -27,20 +27,24 @@ s3  = ("blue", "purple", "red", "green")
 sequence = (s1, s2, s3)
 seqIndex = 0
 
+
 # set this to the "ambient" chamber rgb reading of the color sensor
 ambientColor = (30, 20, 30)
 
+
 # determine if ball is in the chamber (sensor color a certain distance from ambient color)
 def ballInChamber(sensorRGB):
-    # distance = np.linalg.norm(np.array(sensorRGB) - ambientColor)
-    # print(distance)
-    # return distance > 100 # return true if color is within some distance
-    return True
+    distance = np.linalg.norm(np.array(sensorRGB) - ambientColor)
+    print(distance)
+    return distance > 20 # return true if color is within some distance
+    # return True
+
 
 # prompt to look for color
-user_input = input("Press enter to start")
+# user_input = input("Press enter to start")
 runSorter = True
 doorServo.min()
+setVacuumMotor(vacuumMotor, true)  # turn vacuum on
 while(runSorter):
     sensorRGB = colorSensor.color_rgb_bytes
 
@@ -63,9 +67,9 @@ while(runSorter):
     if seqIndex == len(s1):
         dropSequence(chamberServo);
 
-    user_input = input("Press enter to read color or # to stop: ")
-    if (user_input == "#"):
-        runSorter = False
+    # user_input = input("Press enter to read color or # to stop: ")
+    # if (user_input == "#"):
+    #     runSorter = False
 
 
 
